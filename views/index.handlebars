@@ -1,21 +1,54 @@
-<h1>Welcome to SQL Burger! What Would You Like to Order?</h1>
+<div class="container">
 
-<h2>Burgers not devoured</h2>
+  {{!-- HEADER --}}
+  <div class="jumbotron">
+    <h1 class="display-4">Welcome to SQL Burger!</h1>
+    <p class="lead">What would you like to order today? You can choose from our menu of burgers from Bob's Burgers™ or make your own burger! </p>
+    <hr class="my-4">
+    {{!-- FORM --}}
+    <p> 
+    <div class="col-md-4">
+      <form>
+        <input type="text" name="burger">
 
-<ul>
-    {{#each burger}}
-      {{#unless this.devoured}}
-        <li>{{this.id}}.{{this.burger_name}}</li>
-      {{/unless}}
-    {{/each}}
-</ul>
+        <br>
 
-<h2>Burgers devoured</h2>
+        <a class="btn btn-warning btn-lg" role="button">Submit</a>
+      </form>
+    </div>
+  </div>
 
-<ul>
-    {{#each burgers}}
-      {{#if this.devoured}}
-        <li>{{this.id}}.{{this.burger_name}}</li>
-      {{/if}}
-    {{/each}}
-</ul> 
+
+  {{!-- IMAGE --}}
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <img class="img-fluid" src="/public/assets/images/burger.jpeg">
+    </div>
+  </div>
+
+  <div class="row">
+    {{!-- 1ST SECTION - NOT DEVOURED --}}
+    <div class="col-lg-6">
+      <h2>Not Devoured</h2>
+      <ul>
+        {{#each burger}}
+        {{#unless this.devoured}}
+        <li>{{this.id}}. &nbsp; {{this.burger_name}}</li>
+        {{/unless}}
+        {{/each}}
+      </ul>
+    </div>
+    {{!-- 2ND SECTION - DEVOURED --}}
+    <div class="col-lg-6">
+      <h2>Devoured</h2>
+      <ul>
+        {{#each burgers}}
+        {{#if this.devoured}}
+        <li>{{this.id}}. &nbsp; {{this.burger_name}}</li>
+        {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+
+</div>
