@@ -1,8 +1,25 @@
-
 body {
-    background-color: #999;
+    background-color: #FFCA66;
+    color: #C82333;
+}
+
+h1 {
+    margin-top: 1em;
 }
 
 img {
-    width: 20%;
-} 
+    width: 60%;
+}
+
+li {
+    font-size: 1.5em;;
+}
+
+li,
+form {
+    margin-bottom: 0.2em;
+}
+
+li button {
+    margin-left: 0.4em;
+}

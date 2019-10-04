@@ -1,4 +1,4 @@
-<div class="container">
+{{!-- <div class="container">
 
   {{!-- HEADER --}}
   <div class="jumbotron">
@@ -45,6 +45,59 @@
         {{#each burgers}}
         {{#if this.devoured}}
         <li>{{this.id}}. &nbsp; {{this.burger_name}}</li>
+        {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+
+</div> --}}
+
+
+<div class="container">
+
+  {{!-- Title --}}
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h1>Eat Da Burger!</h1>
+    </div>
+  </div>
+
+  {{!-- Burger Image --}}
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <img class="img-fluid" src="/public/assets/images/burger.png">
+    </div>
+  </div>
+
+  <div class="row">
+    {{!-- Not Devoured --}}
+    <div class="col-md-4">
+      <h2 class="text-center">Not Devoured</h2>
+      <ul>
+        {{#each burger}}
+        {{#unless this.devoured}}
+        {{> burgers/burger-block devoured=true}}
+        {{/unless}}
+        {{/each}}
+      </ul>
+    </div>
+    {{!-- Form --}}
+    <div class="col-md-4 text-center">
+      <form action="" method="POST" id="burger-form">
+        <input type="text" id="burger" placeholder="Enter Your Burger">
+        <input type="submit" id="submit-button" class="btn btn-danger" value="Submit">
+      </form>
+    </div>
+    {{!-- Devoured --}}
+    <div class="col-md-4">
+      <h2 class="text-center">Devoured</h2>
+      <ul>
+        {{#each burger}}
+        {{#if this.devoured}}
+        <li>
+          {{burger_name}}
+        </li>
         {{/if}}
         {{/each}}
       </ul>
