@@ -1,23 +1,26 @@
-module.exports = 
-{
-  "development": {
-    "username": "root",
-    "password": "password",
-    "database": "event_db",
-    "host": "127.0.0.1",
-    "port": 3306,
-    "dialect": "mysql"
-  },
-  "test": {
-    "username": "kmo7jjtlnj340a9s",
-    "password": "hi1e6qvbqdi2zmog",
-    "database": "o4r7w00lsteujqtn",
-    "host": "edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com" ,
-    "port": 3306,
-    "dialect": "mysql"
-  },
-  "production": {
-    "use_env_variable": "JAWSDB_URL",
-    "dialect": "mysql"
+/*
+Make the connection to the database and export to be used by the O.R.M.
+*/
+var mysql = require('mysql');
+var connection;
+​
+if (process.env.JAWSDB_URL) {
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+    connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'rootroot',
+    database: 'burgers_db'
+    });
+};
+​
+connection.connect(function (err) {
+  if (err) {
+    console.error('error connecting: ' + err.stack);
+    return;
   }
-}
+  console.log('connected as id ' + connection.threadId);
+});
+​
+module.exports = connection;
